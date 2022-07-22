@@ -22,3 +22,10 @@ jobs:
           docker push vijyant97/dev:golang 
       # - run: |    
       #     name:
+workflow:
+  build_push_docker:
+    jobs:
+      - build
+      - setup_remote_docker
+      - run
+      
