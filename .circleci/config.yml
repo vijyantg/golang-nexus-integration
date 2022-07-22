@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/base:2022.07
+      - image: circleci/cci-demo-docker-primary:0.0.1
         auth:
           username: vijyant97
           password: Vijyant@97   # Replace with your DockerHub password
