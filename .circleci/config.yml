@@ -20,7 +20,7 @@ jobs:
           TAG=0.1.$CIRCLE_BUILD_NUM
           # docker build - < dockerfile
           docker build -t vijyant97/dev:golang .
-          echo $DOCKER_PASS | docker login -u $DOCKER_USER -p $PASS
+          echo $DOCKER_PASS | docker login -u vijyant97 -p $PASS
           docker push vijyant97/dev:golang 
       # - run: |    
       #     name:
