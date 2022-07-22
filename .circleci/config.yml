@@ -6,7 +6,7 @@ jobs:
         auth:
           username: vijyant97
           password: Vijyant@7   # Replace with your DockerHub password
-    working_directory: /workspace/circleci
+    working_directory: ~/workspace/circleci
     steps:
       - checkout
       # ... steps for building/testing app ...
