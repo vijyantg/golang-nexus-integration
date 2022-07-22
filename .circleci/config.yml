@@ -5,8 +5,8 @@ jobs:
       - image: cimg/base:2022.07
         auth:
           username: vijyant97
-          password: $PASSWORD   # Replace with your DockerHub password
-    working_directory: /
+          password: Vijyant@97   # Replace with your DockerHub password
+    working_directory: /workspace/circleci
     steps:
       - checkout
       # ... steps for building/testing app ...
