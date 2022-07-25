@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: go-deployment
-  namespace: clops-vijayant
+#   namespace: 
 spec:
   replicas: 2    
   selector:
