@@ -19,6 +19,7 @@ jobs:
       - run: |
           TAG=0.1.$CIRCLE_BUILD_NUM
           # docker build - < dockerfile
+          echo $TAG
           docker build -t vijyant97/dev:${TAG} .
           echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
           docker push vijyant97/dev:${TAG}
