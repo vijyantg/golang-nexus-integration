@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: latest
-          image: vijyant97/dev:$TAG
+          image: vijyant97/dev:latest
           ports:
           - containerPort: 8080
           resources:
