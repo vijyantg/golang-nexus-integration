@@ -41,12 +41,4 @@ jobs:
             aws eks --region eu-west-1 update-kubeconfig --name go-test-cluster
             sed -i 's/\(image:.*\)/\1\n      tag: '$TAG'/' deploy/k8s/deployment.yaml
             kubectl apply -f deploy/k8s/deployment.yaml
-          
-   
-         # - run: |    
-      #     name:
-workflow:
-  build_push_docker:
-    jobs:
-      - build
-      - deploy
+        
