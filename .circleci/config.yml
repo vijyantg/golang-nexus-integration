@@ -42,8 +42,8 @@ jobs:
             chmod +x ./kubectl
             mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
             aws eks --region eu-west-1 update-kubeconfig --name go-test-cluster
-            sed -i 's/\(image:.*\)/\1\n      tag: '$TAG'/' deploy/k8s/deployment.yaml
-            kubectl apply -f deploy/k8s/deployment.yaml
+            sed -i 's/\(image:.*\)/\1\n      tag: '$TAG'/' deployment.yaml
+            kubectl apply -f deployment.yaml
         
 workflows:
   version: 2
