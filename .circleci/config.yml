@@ -23,7 +23,7 @@ jobs:
           echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
           docker push vijyant97/dev:${TAG}
 
-  deploy:
+  deploytoeks:
     docker:
       - image: amazon/aws-cli
         environment:
@@ -47,4 +47,4 @@ workflows:
   build_and_deploy:
     jobs:
       - build
-      - deploy
+      - deploytoeks
