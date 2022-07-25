@@ -43,7 +43,7 @@ jobs:
             chmod +x ./kubectl
             mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
             aws eks --region eu-west-1 update-kubeconfig --name go-test-cluster
-            sed -i 's/vijyant97\/dev:.*/vijyant97\/dev:${TAG}/g' deployment.yaml
+            
             kubectl apply -f deployment.yaml
         
 workflows:
