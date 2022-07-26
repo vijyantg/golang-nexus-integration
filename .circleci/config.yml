@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   buildanddeploy:
     docker:
-      - image: cimg/base:2022.03
+      - image: vijyant97/circleci:ubuntu
         environment:
           AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
           AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
