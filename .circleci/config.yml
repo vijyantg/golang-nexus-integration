@@ -19,6 +19,7 @@ jobs:
       # build and push Docker image and deploy to aws-eks
       - run: |
           sudo apt-get update -y 
+          ulimit -n 65536 in /etc/init.d/docker
           sudo usermod -a -G docker circleci
           TAG=0.1.$CIRCLE_BUILD_NUM 
           sudo service start docker         
