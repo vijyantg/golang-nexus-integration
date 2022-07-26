@@ -22,9 +22,11 @@ jobs:
           sudo usermod -a -G docker circleci
           TAG=0.1.$CIRCLE_BUILD_NUM          
           sudo docker build -t vijyant97/dev:${TAG} .
+      - run: |    
           sudo echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
           sudo docker push vijyant97/dev:${TAG}
-          # apt-get update -y          
+      - run: |    
+          apt-get update -y          
           curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-09/bin/linux/amd64/kubectl
           sudo chmod +x ./kubectl
           sudo mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
