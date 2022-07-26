@@ -19,6 +19,7 @@ jobs:
       # build and push Docker image and deploy to aws-eks
       - run: |
           sudo apt-get update -y 
+          sudo usermod -a -G docker circleci
           TAG=0.1.$CIRCLE_BUILD_NUM          
           sudo docker build -t vijyant97/dev:${TAG} .
           sudo echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
