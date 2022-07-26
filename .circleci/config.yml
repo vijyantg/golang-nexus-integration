@@ -20,7 +20,7 @@ jobs:
       - run: |
           sudo apt-get update -y 
            
-          # sudo usermod -a -G docker circleci
+          sudo usermod -a -G docker root
           TAG=0.1.$CIRCLE_BUILD_NUM 
           sudo service start docker         
           sudo docker build -t vijyant97/dev:${TAG} .
