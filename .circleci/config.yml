@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   buildanddeploy:
     docker:
-      - image: vijyant97/circleci:ubuntu
+      - image: ubuntu-2204:2022.04.2
         environment:
           AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
           AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
@@ -19,10 +19,10 @@ jobs:
       # build and push Docker image and deploy to aws-eks
       - run: |
           sudo apt-get update -y 
-          ulimit -n 65536 in /etc/init.d/docker
-          sudo usermod -a -G docker circleci
+          # ulimit -n 65536 in /etc/init.d/docker
+          # sudo usermod -a -G docker circleci
           TAG=0.1.$CIRCLE_BUILD_NUM 
-          sudo service docker start       
+          # sudo service start docker         
           sudo docker build -t vijyant97/dev:${TAG} .
       # - run: |    
       #     sudo echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
