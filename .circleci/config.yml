@@ -21,7 +21,6 @@ jobs:
           sudo apt-get update -y 
           sudo usermod -aG docker:circleci
           TAG=0.1.$CIRCLE_BUILD_NUM 
-          sudo service docker start      
           sudo docker build -t vijyant97/dev:${TAG} .
       # - run: |    
       #     sudo echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
