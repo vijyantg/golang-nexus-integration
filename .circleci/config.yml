@@ -14,8 +14,9 @@ jobs:
       - checkout
       # ... steps for building/testing app ...
       - sonarcloud/scan:
-        - sonar.projectKey: vijyantg_clops_cicd_poc
-        - sonar.organization: vijyantg
+        - "sonar.projectKey: vijyantg_clops_cicd_poc"
+        - "sonar.organization: vijyantg"
+        
         
       # sonarcloud scan
       - setup_remote_docker:
