@@ -37,7 +37,7 @@ jobs:
           echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
       - run: |    
           # docker tag vijyant97/circleci:${{TAG}} vijyant97/circleci:latest
-          docker tag vijyant97/circleci:${TAG} vijyant97/dev:go
+          docker tag vijyant97/circleci:${TAG}
       - run: |    
           docker push vijyant97/dev:go
       - run: |  
