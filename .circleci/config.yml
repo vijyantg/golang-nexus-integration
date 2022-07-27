@@ -25,7 +25,8 @@ jobs:
           
           echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
       - run: |    
-          docker push vijyant97/circleci:${TAG}
+          docker tag vijyant97/circleci:${TAG} vijyant97/circleci:latest
+          docker push vijyant97/circleci:latest
       # - run: |    
       #     apt-get update -y          
       #     curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-09/bin/linux/amd64/kubectl
