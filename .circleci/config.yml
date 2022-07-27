@@ -30,13 +30,16 @@ jobs:
           docker build -t vijyant97/circleci:${TAG} .
       - run: |
           # docker run ghcr.io/aquasecurity/trivy:latest --scan --out-format json --out-path ./trivy.json
-          docker run ghcr.io/aquasecurity/trivy:latest image vijyant97/circleci:${TAG}  --format json --output /tmp/trivy.json
+          docker run ghcr.io/aquasecurity/trivy:latest image vijyant97/circleci:${TAG}  --format json --output ./trivy.json
+          cp ./triv.json /tmp/trivy.json
       # - run: |
       #     curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sudo sh -s -- -b /usr/local/bin   
       #     trivy image --severity CRITICAL vijyant97/circleci:${TAG} -o /tmp/trivy.json
       - store_artifacts:
-          path: /tmp/trivy.json
-          name: trivy.json
+          path: /tmp/trivy.json          
+          destination: artifact-file
+      - store_artifacts:
+          path: ./trivy.json          
           destination: artifact-file
           
       - run: |    
