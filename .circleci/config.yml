@@ -34,9 +34,11 @@ jobs:
       - run: |
           
           docker pull aquasec/latest
-          docker run --rm -v ~/workspace/circleci:/root/.cache/ aquasec/trivy:latest vijyant97/circleci:${TAG}
+          # docker run --rm -v ~/workspace/circleci:/root/.cache/ aquasec/trivy:latest vijyant97/circleci:${TAG}
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \ 
+          -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy:latest vijyant97/circleci:${TAG}
   
-
+          
           sudo touch ./trivy.json
           # docker run ghcr.io/aquasecurity/trivy:latest image vijyant97/circleci:${TAG}  --format json --output ./trivy.json
           mkdir -p /tmp
