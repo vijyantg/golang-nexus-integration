@@ -37,6 +37,7 @@ jobs:
           echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
       - run: |    
           # docker tag vijyant97/circleci:${{TAG}} vijyant97/circleci:latest
+          docker tag vijyant97/circleci:${TAG} vijyant97/circleci:latest
           docker push vijyant97/circleci:${TAG}
       - run: |  
           curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
