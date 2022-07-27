@@ -20,12 +20,12 @@ jobs:
       - run: |
           sudo apt-get update -y 
           TAG=0.1.$CIRCLE_BUILD_NUM 
-          docker build -t vijyant97/circleci:${TAG} .
+          docker build -t vijyant97/circleci:latest .
       - run: |    
           
           echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
       - run: |    
-          docker tag vijyant97/circleci:${TAG} vijyant97/circleci:latest
+          # docker tag vijyant97/circleci:${TAG} vijyant97/circleci:latest
           docker push vijyant97/circleci:latest
       # - run: |    
       #     apt-get update -y          
