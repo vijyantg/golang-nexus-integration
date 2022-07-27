@@ -24,6 +24,7 @@ jobs:
       - run: |    
           # docker login -u vijyant97 -p Vijyant@7
           echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
+      - run: |
           docker push vijyant97/circleci:${TAG}
       # - run: |    
       #     apt-get update -y          
