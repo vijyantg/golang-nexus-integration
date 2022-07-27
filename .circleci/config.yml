@@ -33,7 +33,7 @@ jobs:
           echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
       - run: |
           
-          docker pull aquasec/latest
+          # docker pull aquasec/latest
           # docker run --rm -v ~/workspace/circleci:/root/.cache/ aquasec/trivy:latest vijyant97/circleci:${TAG}
           docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \ 
           -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy:latest vijyant97/circleci:${TAG}
