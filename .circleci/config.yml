@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.3
 jobs:
   buildanddeploy:
     docker:
@@ -11,7 +13,8 @@ jobs:
     steps:
       - checkout
       # ... steps for building/testing app ...
-
+      - sonarcloud/scan
+      # sonarcloud scan
       - setup_remote_docker:
           version: 20.10.14
           docker_layer_caching: true
@@ -21,9 +24,11 @@ jobs:
           sudo apt-get update -y 
           TAG=0.1.$CIRCLE_BUILD_NUM 
           docker build -t vijyant97/circleci:latest .
-      - run: |              
+      - run: |    
+          
           echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
-      - run: |              
+      - run: |    
+          # docker tag vijyant97/circleci:${TAG} vijyant97/circleci:latest
           docker push vijyant97/circleci:latest
       - run: |  
           curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -43,6 +48,7 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - buildanddeploy
+      - build_and_deploy:
+          context: SonarCloud
       
           
