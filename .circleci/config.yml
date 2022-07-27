@@ -24,7 +24,7 @@ jobs:
       - run: |    
           # docker login -u vijyant97 -p Vijyant@7
           echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
-          sudo docker push vijyant97/dev:${TAG}
+          docker push vijyant97/dev:${TAG}
       # - run: |    
       #     apt-get update -y          
       #     curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-09/bin/linux/amd64/kubectl
