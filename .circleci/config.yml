@@ -37,6 +37,7 @@ jobs:
       - store_artifacts:
           path: /tmp/trivy.json
           name: trivy.json
+          destination: artifact-file
           
       - run: |    
           
