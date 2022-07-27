@@ -46,9 +46,7 @@ jobs:
           kubectl apply -f deployment.yaml        
 workflows:
   version: 2
-  build_and_deploy:
+  build:
     jobs:
-      - build_and_deploy:
-          context: SonarCloud
-      
-          
+      - buildanddeploy:
+          context: SonarCloud                
