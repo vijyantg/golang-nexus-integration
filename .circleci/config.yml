@@ -13,7 +13,7 @@ jobs:
     steps:
       - checkout
       # ... steps for building/testing app ...
-      - sonarcloud/scan
+      - sonarcloud/scan:
         - sonar.projectKey: vijyantg_clops_cicd_poc
         - sonar.organization: vijyantg
         
