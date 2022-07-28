@@ -64,7 +64,7 @@ jobs:
           path: ./trivy.json          
           destination: artifact-file          
       - run: |    
-          docker push -a vijyant97/circleci:$${TAG} 
+          docker push -a vijyant97/circleci:${TAG} 
           # docker push vijyant97/circleci:${CIRCLE_TAG}
       - run: |  
           curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
