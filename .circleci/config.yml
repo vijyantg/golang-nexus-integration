@@ -29,7 +29,8 @@ jobs:
           docker build -t vijyant97/circleci:${TAG} .
           docker images 
       - run: |    
-          docker tag vijyant97/circleci:${TAG} vijyant97/circleci:${TAG}
+          # docker tag vijyant97/circleci:${TAG} vijyant97/circleci:${TAG}
+          docker tag vijyant97/circleci:${TAG} vijyant97/circleci:latest${TAG}
           echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
       - run: |
           
