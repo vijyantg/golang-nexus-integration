@@ -30,7 +30,7 @@ jobs:
           docker images 
       - run: |    
           # docker tag vijyant97/circleci:${TAG} vijyant97/circleci:${TAG}
-          docker tag vijyant97/circleci:${TAG} vijyant97/circleci:latest${TAG}
+          # docker tag vijyant97/circleci:${TAG} vijyant97/circleci
           echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
       - run: |
           
