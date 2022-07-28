@@ -27,6 +27,7 @@ jobs:
           sudo apt-get update -y 
           TAG=0.2.$CIRCLE_BUILD_NUM            
           docker build -t vijyant97/circleci:${TAG} .
+          docker images 
       - run: |    
           docker tag vijyant97/circleci:${TAG} vijyant97/circleci:${TAG}
           echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
@@ -52,7 +53,7 @@ jobs:
           path: ./trivy.json          
           destination: artifact-file          
       - run: |    
-          docker push vijyant97/circleci
+          docker push vijyant97/circleci:${TAG}
       - run: |  
           curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
           unzip awscliv2.zip 
