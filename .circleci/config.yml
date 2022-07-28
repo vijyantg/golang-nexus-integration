@@ -25,13 +25,16 @@ jobs:
       # build and push Docker image and deploy to aws-eks
       - run: |
           sudo apt-get update -y 
-          TAG=0.2.$CIRCLE_BUILD_NUM            
+          # TAG=0.2.$CIRCLE_BUILD_NUM            
+          # CIRCLE_TAG=0.1.$CIRCLE_BUILD_NUM 
+          CIRCLE_TAG=`git name-rev --tags --name-only $(git rev-parse HEAD)`
+           
           echo TAG=0.2.$CIRCLE_BUILD_NUM            
-          docker build -t vijyant97/circleci -t vijyant97/circleci:${TAG} .
-          docker images 
+          # docker build -t vijyant97/circleci:${TAG} .
+          docker build -t vijyant97/circleci:${CIRCLE_TAG} .
+          docker images  
       - run: |    
           # docker tag vijyant97/circleci:${TAG} vijyant97/circleci:${TAG}
-          # docker tag vijyant97/circleci vijyant97/circleci:${TAG} .
           echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
       - run: |
           
@@ -39,7 +42,8 @@ jobs:
           # docker run --rm -v ~/workspace/circleci:/root/.cache/ aquasec/trivy:latest vijyant97/circleci:${TAG}
           # docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \ 
           # -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy:latest vijyant97/circleci:${TAG}
-          docker run aquasec/trivy image vijyant97/circleci:${TAG} 
+          # docker run aquasec/trivy image vijyant97/circleci:${TAG} 
+          docker run aquasec/trivy image vijyant97/circleci:${CIRCLE_TAG} 
           
           sudo touch ./trivy.json
           # docker run ghcr.io/aquasecurity/trivy:latest image vijyant97/circleci:${TAG}  --format json --output ./trivy.json
@@ -55,7 +59,8 @@ jobs:
           path: ./trivy.json          
           destination: artifact-file          
       - run: |    
-          docker push vijyant97/circleci:${TAG}
+          # docker push vijyant97/circleci:${TAG}
+          docker push vijyant97/circleci:${CIRCLE_TAG}
       - run: |  
           curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
           unzip awscliv2.zip 
