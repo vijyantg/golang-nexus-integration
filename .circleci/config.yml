@@ -25,10 +25,10 @@ jobs:
       # build and push Docker image and deploy to aws-eks
       - run: |
           sudo apt-get update -y 
-          TAG=0.1.$CIRCLE_BUILD_NUM            
+          TAG=0.2.$CIRCLE_BUILD_NUM            
           docker build -t vijyant97/circleci:${TAG} .
       - run: |    
-          docker tag vijyant97/circleci:${TAG} vijyant97/circleci:latest
+          docker tag vijyant97/circleci:${TAG} vijyant97/circleci:${TAG}
           echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
       - run: |
           
@@ -50,9 +50,7 @@ jobs:
           destination: artifact-file
       - store_artifacts:
           path: ./trivy.json          
-          destination: artifact-file
-          
-
+          destination: artifact-file          
       - run: |    
           docker push vijyant97/circleci
       - run: |  
