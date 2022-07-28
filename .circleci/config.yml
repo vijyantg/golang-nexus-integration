@@ -35,7 +35,7 @@ jobs:
           # docker build -t vijyant97/circleci .
           docker images  
       - run: |    
-          # docker tag vijyant97/circleci vijyant97/circleci:1.0.0
+          docker tag vijyant97/circleci:${TAG} vijyant97/circleci:${TAG}
           # ID=$(docker build  -t vijyant97/circleci  .  | tail -1 | sed 's/.*Successfully built \(.*\)$/\1/')
 
           # docker tag ${ID} ${IMAGE}:${VERSION}
