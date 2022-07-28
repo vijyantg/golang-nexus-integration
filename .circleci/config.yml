@@ -35,7 +35,7 @@ jobs:
           # docker build -t vijyant97/circleci .
           docker images  
       - run: |    
-          docker tag vijyant97/circleci:${TAG} vijyant97/circleci:${TAG}
+          # docker tag vijyant97/circleci:${TAG} vijyant97/circleci:${TAG}
           # ID=$(docker build  -t vijyant97/circleci  .  | tail -1 | sed 's/.*Successfully built \(.*\)$/\1/')
 
           # docker tag ${ID} ${IMAGE}:${VERSION}
@@ -64,7 +64,7 @@ jobs:
           path: ./trivy.json          
           destination: artifact-file          
       - run: |    
-          docker push -a vijyant97/circleci:${TAG} 
+          docker push -a vijyant97/circleci
           # docker push vijyant97/circleci:${CIRCLE_TAG}
       - run: |  
           curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
