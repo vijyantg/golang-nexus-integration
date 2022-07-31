@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: latest
-          image: vijyant97/circleci:latest
+          image: vijyant97/circleci:0.5.20
           ports:
           - containerPort: 8080
           resources:
