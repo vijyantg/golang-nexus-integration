@@ -1,6 +1,6 @@
 version: 2.1
 orbs:
-  sonarcloud: sonarsource/sonarcloud@1.0.3
+  sonarcloud: sonarsource/sonarcloud@1.1.1
 jobs:
   buildanddeploy:
     docker:
@@ -12,12 +12,7 @@ jobs:
     working_directory: ~/workspace/circleci
     steps:
       - checkout
-      # ... steps for building/testing app ...
-      # - sonarcloud/scan:
-          
-      #     sonar.projectKey: 'vijyantg_clops_cicd_poc'
-      #     sonar.organization: 'vijyantg'     
-      # sonarcloud scan
+      - sonarcloud/scan
       - setup_remote_docker:
           version: 20.10.14
           docker_layer_caching: true
@@ -50,19 +45,19 @@ jobs:
           # docker run aquasec/trivy image vijyant97/circleci:${TAG} 
           docker run aquasec/trivy image vijyant97/circleci:${CIRCLE_TAG} 
           
-          sudo touch ./trivy.json
+          # sudo touch ./trivy.json
           # docker run ghcr.io/aquasecurity/trivy:latest image vijyant97/circleci:${TAG}  --format json --output ./trivy.json
-          mkdir -p /tmp
-          cp ./trivy.json /tmp/trivy.json
+          # mkdir -p /tmp
+          # cp ./trivy.json /tmp/trivy.json
       # - run: |
       #     curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sudo sh -s -- -b /usr/local/bin   
       #     trivy image --severity CRITICAL vijyant97/circleci:${TAG} -o /tmp/trivy.json
-      - store_artifacts:
-          path: /tmp/trivy.json          
-          destination: artifact-file
-      - store_artifacts:
-          path: ./trivy.json          
-          destination: artifact-file          
+      # - store_artifacts:
+      #     path: /tmp/trivy.json          
+      #     destination: artifact-file
+      # - store_artifacts:
+      #     path: ./trivy.json          
+      #     destination: artifact-file          
       - run: |    
           docker push -a vijyant97/circleci
           # docker push vijyant97/circleci:${CIRCLE_TAG}
@@ -85,6 +80,6 @@ workflows:
   build:
     jobs:
       - buildanddeploy:
-          context: SonarCloud
+          context: sonarcloud
       
           
