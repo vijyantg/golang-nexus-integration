@@ -18,14 +18,15 @@ jobs:
           docker_layer_caching: true
       # build and push Docker image and deploy to aws-eks
       - run: |            
-          TAG=0.1.${CIRCLE_BUILD_NUM}            
+          #TAG=0.1.${CIRCLE_BUILD_NUM}
+          TAG=0.1.${{CIRCLE_TAG}}
           docker build -t vijyant97/circleci:${TAG} .           
-      - run: |    
-          echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
       - run: |          
-          docker run aquasec/trivy image vijyant97/circleci:${TAG} 
+          docker run aquasec/trivy image vijyant97/circleci:${TAG}
       - run: |    
-          docker push vijyant97/circleci:$TAG
+          echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin 
+      - run: |    
+          docker push vijyant97/circleci:${TAG}
       - run: |  
           curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
           unzip awscliv2.zip 
