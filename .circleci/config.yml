@@ -18,7 +18,7 @@ jobs:
           docker_layer_caching: true
       # build and push Docker image and deploy to aws-eks
       - run: |            
-          TAG=0.1.${{CIRCLE_BUILD_NUM}}            
+          TAG=0.1.${CIRCLE_BUILD_NUM}            
           docker build -t vijyant97/circleci:${TAG} .           
       - run: |    
           echo $DOCKER_PASS | docker login -u vijyant97 --password-stdin
