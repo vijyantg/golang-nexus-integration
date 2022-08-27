@@ -19,9 +19,8 @@ jobs:
     working_directory: ~/workspace/circleci
     steps:
       - checkout
-      - go test \
-        -coverprofile 
-
+      - go test
+ 
 #       - run: |
 #           pwd
 #           ls -lart
