@@ -2,11 +2,12 @@ version: 2.1
 orbs:
   sonarcloud: sonarsource/sonarcloud@1.1.1
   go: travelaudience/go@0.8.0
+executor:
 parameters:
-  coverprofile:
-    default: cover-source.out
-    description: file to save coverage profile
-    type: string  
+#   coverprofile:
+#     default: cover-source.out
+#     description: file to save coverage profile
+#     type: string  
   exec:
     description: >-
       Executor to use for this job (as described in the executor of this orb,
@@ -24,7 +25,7 @@ jobs:
     steps:
       - checkout
       - go/test:
-          coverprofile:coverage.out
+            coverprofile:coverage.out
 #       - run: |
 #           pwd
 #           ls -lart
