@@ -2,29 +2,29 @@ version: 2.1
 orbs:
   sonarcloud: sonarsource/sonarcloud@1.1.1
   go: travelaudience/go@0.8.0
-executor:
-parameters:
+# executor:
+# parameters:
 #   coverprofile:
 #     default: cover-source.out
 #     description: file to save coverage profile
 #     type: string  
-  exec:
-    description: >-
-      Executor to use for this job (as described in the executor of this orb,
-      this requires CC_TEST_REPORTER_ID env var)
-    type: executor
-  covermode:
-    default: atomic
-    description: >
-      flag to set the coverage mode
+#   exec:
+#     description: >-
+#       Executor to use for this job (as described in the executor of this orb,
+#       this requires CC_TEST_REPORTER_ID env var)
+#     type: executor
+#   covermode:
+#     default: atomic
+#     description: >
+#       flag to set the coverage mode
 
-      (the go default is: "set", unless -race is enabled, in which case the go
-      default is "atomic")
-    enum:
-      - set
-      - count
-      - atomic
-    type: enum    
+#       (the go default is: "set", unless -race is enabled, in which case the go
+#       default is "atomic")
+#     enum:
+#       - set
+#       - count
+#       - atomic
+#     type: enum    
      
 jobs:
   buildanddeploy:
