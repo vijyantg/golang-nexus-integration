@@ -12,11 +12,11 @@ jobs:
     working_directory: ~/workspace/circleci
     steps:
       - checkout
-#       - run: |
-#           go mod init
-#           go test -v
-#           go test -coverprofile=coverage.out
-#           go tool cover -html=coverage.out
+      - run: |
+          go mod init
+          go test -v
+          go test -coverprofile=coverage.out
+          go tool cover -html=coverage.out
       - sonarcloud/scan
       - setup_remote_docker:
           version: 20.10.14
@@ -38,14 +38,14 @@ jobs:
           sudo ./aws/install
           curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
           sudo mv /tmp/eksctl /usr/local/bin 
-      - run: |    
-          sudo apt-get update -y          
-          curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-09/bin/linux/amd64/kubectl
-          chmod +x ./kubectl
-          mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
-          aws eks --region eu-west-1 update-kubeconfig --name go-test-cluster
-          kubectl apply -f service.yaml
-          kubectl apply -f deployment.yaml        
+#       - run: |    
+#           sudo apt-get update -y          
+#           curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-09/bin/linux/amd64/kubectl
+#           chmod +x ./kubectl
+#           mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
+#           aws eks --region eu-west-1 update-kubeconfig --name go-test-cluster
+#           kubectl apply -f service.yaml
+#           kubectl apply -f deployment.yaml        
 workflows:
   version: 2
   build:
