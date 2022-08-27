@@ -17,7 +17,7 @@ jobs:
           ls -lart
       - run: |         
           go test -v main_test.go
-          #go test -cover -v
+          go test -cover
           #go test -coverprofile=coverage.out
           #go tool cover -html=coverage.out
           #go tool cover -func=coverage-report.out
