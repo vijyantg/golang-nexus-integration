@@ -17,6 +17,7 @@ jobs:
           cat coverage.out
           go tool cover -html=coverage.out
           go tool cover -func=coverage.out
+          pwd
           ls -lart
       - sonarcloud/scan
       - setup_remote_docker:
