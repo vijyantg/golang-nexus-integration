@@ -12,11 +12,11 @@ jobs:
     working_directory: ~/workspace/circleci
     steps:
       - checkout
-      - run: |
-         
-          go test -v main_test.go
+      - run: |         
+          CGO_ENABLED=0 go test -v ./...  #main_test.go
           go test -coverprofile=coverage.out
           go tool cover -html=coverage.out
+          go tool cover -func=coverage-report.out
       - sonarcloud/scan
       - setup_remote_docker:
           version: 20.10.14
