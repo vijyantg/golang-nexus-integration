@@ -16,7 +16,7 @@ jobs:
           pwd
           ls -lart
       - run: |         
-          go test ./...
+          go test main_test.go
           go test -cover -v
           go test -coverprofile=coverage.out
           go tool cover -html=coverage.out
