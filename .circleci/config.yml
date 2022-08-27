@@ -1,7 +1,6 @@
 version: 2.1
 orbs:
-  sonarcloud: sonarsource/sonarcloud@1.1.1
-  go: travelaudience/go@0.8.0  
+  sonarcloud: sonarsource/sonarcloud@1.1.1 
 jobs:
   buildanddeploy:
     docker:
@@ -13,22 +12,15 @@ jobs:
     working_directory: ~/workspace/circleci
     steps:
       - checkout
-      - run: go vet ./...      
-#       - golang/test:
-#           coverage-report-path: coverage.out
-#           repo-name: clops_cicd_poc
-#           repo-owner: vijyantg
-#           tests-report-dir: ~/workspace/circleci/report.json
- 
-#       - run: |
-#           pwd
-#           ls -lart
-#       - run: |         
-#           go test -v main_test.go
-#           go test -cover
-#           go test -coverprofile=coverage.out
-#           go tool cover -html=coverage.out
-#           go tool cover -func=coverage-report.out
+      - run: |
+          pwd
+          ls -lart
+      - run: |         
+          go test -v ./...
+#          go test -cover
+#          go test -coverprofile=coverage.out
+#          go tool cover -html=coverage.out
+#          go tool cover -func=coverage-report.out
       - sonarcloud/scan
       - setup_remote_docker:
           version: 20.10.14
