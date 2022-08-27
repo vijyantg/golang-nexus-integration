@@ -13,6 +13,18 @@ parameters:
       Executor to use for this job (as described in the executor of this orb,
       this requires CC_TEST_REPORTER_ID env var)
     type: executor
+  covermode:
+    default: atomic
+    description: >
+      flag to set the coverage mode
+
+      (the go default is: "set", unless -race is enabled, in which case the go
+      default is "atomic")
+    enum:
+      - set
+      - count
+      - atomic
+    type: enum    
      
 jobs:
   buildanddeploy:
