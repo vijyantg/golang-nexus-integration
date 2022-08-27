@@ -51,4 +51,4 @@ workflows:
   build:
     jobs:
       - buildanddeploy:
-          context: sonarcloud
+          context: SonarCloud
