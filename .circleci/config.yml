@@ -13,7 +13,7 @@ jobs:
     steps:
       - checkout
       - run: |         
-          CGO_ENABLED=0 go test -v ./...  #main_test.go
+          go test ./...
           go test -coverprofile=coverage.out
           go tool cover -html=coverage.out
           go tool cover -func=coverage-report.out
