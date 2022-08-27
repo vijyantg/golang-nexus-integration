@@ -13,11 +13,7 @@ parameters:
       Executor to use for this job (as described in the executor of this orb,
       this requires CC_TEST_REPORTER_ID env var)
     type: executor
-  enum:
-      - set
-      - count
-      - atomic
-    type: enum    
+     
 jobs:
   buildanddeploy:
     docker:
