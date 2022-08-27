@@ -2,7 +2,8 @@ version: 2.1
 orbs:
   sonarcloud: sonarsource/sonarcloud@1.1.1
   go: travelaudience/go@0.8.0
-# executor:
+executors:
+  golang-executor:
 parameters:
   coverprofile:
     default: cover-source.out
@@ -31,14 +32,18 @@ jobs:
     docker:
       - image: cimg/go:1.17
         environment:
+          CC_TEST_REPORTER_ID: 123ABC
           AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
           AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
           AWS_DEFAULT_REGION: $AWS_REGION
     working_directory: ~/workspace/circleci
     steps:
       - checkout
-      - go/test:
-            coverprofile:coverage.out
+      - go/test_and_coverage:
+          additional_flags: '--prefix=v3'
+          exec: golang-executor
+#       - go/test:
+#             coverprofile:coverage.out
 #       - run: |
 #           pwd
 #           ls -lart
