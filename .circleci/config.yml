@@ -13,8 +13,8 @@ jobs:
     steps:
       - checkout
       - run: |
-          go mod init
-          go test -v
+         
+          go test -v main_test.go
           go test -coverprofile=coverage.out
           go tool cover -html=coverage.out
       - sonarcloud/scan
