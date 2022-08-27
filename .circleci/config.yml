@@ -1,13 +1,7 @@
 version: 2.1
 orbs:
   sonarcloud: sonarsource/sonarcloud@1.1.1
-  golang: xav/golang@1.0.0   
-parameters:
-  coverage-report-path:
-    default: coverage.out
-    description: |
-      Path to go coverage report output (go test -coverprofile=coverage.out)
-    type: string  
+  golang: bulderbank/golang@1.4.1  
 jobs:
   buildanddeploy:
     docker:
@@ -19,7 +13,11 @@ jobs:
     working_directory: ~/workspace/circleci
     steps:
       - checkout
-      - golang/test
+      - test:
+        coverage-report-path:coverage.out
+        repo-name:clops_cicd_poc
+        repo-owner:vijyantg
+        tests-report-dir:~/workspace/circleci/report.json
  
 #       - run: |
 #           pwd
