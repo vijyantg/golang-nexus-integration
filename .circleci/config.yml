@@ -4,7 +4,7 @@ orbs:
 jobs:
   buildanddeploy:
     docker:
-      - image: cimg/deploy:2022.07
+      - image: cimg/go:1.17
         environment:
           AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
           AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
@@ -12,6 +12,10 @@ jobs:
     working_directory: ~/workspace/circleci
     steps:
       - checkout
+      - run: |
+          go test -v
+          go test -coverprofile=coverage.out
+          go tool cover -html=coverage.out
       - sonarcloud/scan
       - setup_remote_docker:
           version: 20.10.14
@@ -46,7 +50,4 @@ workflows:
   build:
     jobs:
       - buildanddeploy:
-          context: SonarCloud
-          
-      
-          
+          context: sonarcloud
