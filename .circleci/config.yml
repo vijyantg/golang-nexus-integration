@@ -13,6 +13,7 @@ jobs:
     steps:
       - checkout
       - run: |
+          go mod init
           go test -v
           go test -coverprofile=coverage.out
           go tool cover -html=coverage.out
