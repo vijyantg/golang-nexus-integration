@@ -18,10 +18,13 @@ jobs:
       - run: |         
           
           go test -coverprofile=coverage.out main_test.go
+          ls
+          go tool cover -html=coverage.out
+          go tool cover -func=coverage.out
 #          go test -cover
 #          go test 
 #          go tool cover -html=coverage.out
-#          go tool cover -func=coverage-report.out
+#          
       - sonarcloud/scan
       - setup_remote_docker:
           version: 20.10.14
