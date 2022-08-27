@@ -19,7 +19,7 @@ jobs:
     working_directory: ~/workspace/circleci
     steps:
       - checkout
-      - go test
+      - golang/test
  
 #       - run: |
 #           pwd
