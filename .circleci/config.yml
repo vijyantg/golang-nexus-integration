@@ -12,6 +12,9 @@ jobs:
     working_directory: ~/workspace/circleci
     steps:
       - checkout
+      - run: |
+          pwd
+          ls -lart
       - run: |         
           go test ./...
           go test -coverprofile=coverage.out
