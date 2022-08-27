@@ -14,10 +14,10 @@ jobs:
     steps:
       - checkout
       - test:
-        coverage-report-path:coverage.out
-        repo-name:clops_cicd_poc
-        repo-owner:vijyantg
-        tests-report-dir:~/workspace/circleci/report.json
+          coverage-report-path=coverage.out
+          repo-name=clops_cicd_poc
+          repo-owner=vijyantg
+          tests-report-dir=~/workspace/circleci/report.json
  
 #       - run: |
 #           pwd
