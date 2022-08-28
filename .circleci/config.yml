@@ -13,11 +13,11 @@ jobs:
     steps:
       - checkout
       - run: |
-          mkdir projects && cd projects && mkdir mymodule
-          go mod init mmodule
-          go mod tidy && go get main_test.go
+         # mkdir projects && cd projects && mkdir mymodule
+         # go mod init mmodule
+         # go mod tidy && go get main_test.go
           go test main_test.go -v
-          go test -cover -v
+         # go test -cover -v
           go test -coverprofile=coverage.out #main.go main_test.go -v         
           go tool cover -html=coverage.out
           go tool cover -func=coverage.out
