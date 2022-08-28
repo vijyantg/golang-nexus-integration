@@ -13,7 +13,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          pytjon -m unittest -v test_calc.py test_employee.py
+          python -m unittest -v test_calc.py test_employee.py
 #          # mkdir projects && cd projects && mkdir mymodule
 #          # go mod init mmodule
 #          # go mod tidy && go get main_test.go
