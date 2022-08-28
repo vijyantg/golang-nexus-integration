@@ -13,7 +13,8 @@ jobs:
     steps:
       - checkout
       - run: |
-          go mod init
+          mkdir projects && cd projects && mkdir mymodule
+          go mod init mmodule
           go test main_test.go -v
           go test -cover -v
           go test -coverprofile=coverage.out #main.go main_test.go -v         
