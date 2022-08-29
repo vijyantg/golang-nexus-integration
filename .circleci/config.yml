@@ -13,7 +13,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          python -m unittest -v test_calc.py test_employee.py
+
 #          # mkdir projects && cd projects && mkdir mymodule
 #          # go mod init mmodule
 #          # go mod tidy && go get main_test.go
@@ -22,8 +22,8 @@ jobs:
 #           go test -coverprofile=coverage.out #main.go main_test.go -v         
 #           go tool cover -html=coverage.out
 # #           go tool cover -func=coverage.out
-#           pwd
-#           ls -lart
+          pwd
+          ls -lart
       - sonarcloud/scan
       - setup_remote_docker:
           version: 20.10.14
