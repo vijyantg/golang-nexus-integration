@@ -12,7 +12,7 @@ jobs:
     working_directory: ~/workspace/circleci
     steps:
       - checkout
-      - run: |
+#       - run: |
 
 #          # mkdir projects && cd projects && mkdir mymodule
 #          # go mod init mmodule
